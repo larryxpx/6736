@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer');
+const fs = require("fs");
 
 const PORT = process.env.PORT || 5000;
 
@@ -57,10 +58,10 @@ app.use("/api/", async (req, res) => {
       timeout: 0,
     });
 
-    await page.setViewport({
-      width: 768,
-      height: 1024,
-    });
+    // await page.setViewport({
+    //   width: 768,
+    //   height: 1024,
+    // });
 
     await page.screenshot({ path: imageStorage });
 
@@ -73,5 +74,6 @@ app.use("/api/", async (req, res) => {
     res.status(500).json({ erroe: error.message });
   }
 });
+
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
