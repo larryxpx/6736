@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 const path = require("path");
 const puppeteer = require('puppeteer');
 const fs = require("fs");
@@ -10,8 +9,6 @@ const app = express();
 
 app.disable('x-powered-by');
 
-// app.use(express.static(path.join(__dirname, "public")));
-app.use(cors());
 app.use(express.json());
 
 app.use("/api/", async (req, res) => {
